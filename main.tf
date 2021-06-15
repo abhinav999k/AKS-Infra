@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     azurerm = {
-      source = "hashicorp/azurerm"
+      source  = "hashicorp/azurerm"
       version = "2.63.0"
     }
   }
@@ -9,7 +9,7 @@ terraform {
 
 provider "azurerm" {
   # Configuration options
-  features{}
+  features {}
 }
 
 
@@ -36,6 +36,11 @@ resource "azurerm_kubernetes_cluster" "Res-Aks" {
 
   tags = {
     Environment = "Production"
+  }
+  addon_profile {
+    http_application_routing {
+      enabled = true
+    }
   }
 }
 
